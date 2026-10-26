@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
   output: "export",
   images: { unoptimized: true }, // Required for static hosting
   trailingSlash: true,           // Avoids 404s on static refresh
+  basePath: "/ash-detailing.site",
 
   // 2. Other Experimental & Turbopack Configurations
   experimental: {
