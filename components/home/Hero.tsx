@@ -1,5 +1,7 @@
 // hero.tsx
-import HeroImage from "./images/heroImage.jpg";
+import HeroImage from "@/public/images/heroImage.jpg";
+
+import SocialPill from "@/components/layout/SocialPill";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -7,7 +9,8 @@ import { Button } from "@/components/ui/button";
 
 export default function Hero() {
   return (
-    <section className="relative isolate flex min-h-[85vh] items-center overflow-hidden">
+    // hero.tsx: change only the opening <section> line
+    <section className="relative isolate -mt-16 flex min-h-svh items-center overflow-hidden pt-16 pb-24 sm:-mt-20 sm:pt-20 lg:pb-20">
       {/* Background image */}
       <Image
         src={HeroImage}
@@ -48,11 +51,12 @@ export default function Hero() {
               variant="outline"
               nativeButton={false}
               render={<Link href="/services" />}
-              className="border-white/40 bg-transparent text-white hover:bg-white/10 hover:text-white"
+              className="border-white/40 bg-transparent text-black hover:bg-white/10 hover:text-grey-100"
             >
               See services and prices
             </Button>
           </div>
+          
         </div>
       </div>
     </section>
