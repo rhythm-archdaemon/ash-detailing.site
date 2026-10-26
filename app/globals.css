@@ -1,26 +1,145 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-sans);
   --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-sans);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+
+  /* Brand palette as direct utilities: bg-charcoal, text-pumpkin, border-seagrass ... */
+  --color-charcoal: var(--charcoal);
+  --color-pumpkin: var(--pumpkin);
+  --color-pollen: var(--pollen);
+  --color-olive: var(--olive);
+  --color-seagrass: var(--seagrass);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  /* Brand palette */
+  --charcoal: #233d4d; /* Charcoal Blue */
+  --pumpkin: #fe7f2d;  /* Pumpkin Spice */
+  --pollen: #fcca46;   /* Golden Pollen */
+  --olive: #a1c181;    /* Muted Olive */
+  --seagrass: #619b8a; /* Seagrass */
+
+  /* Semantic tokens */
+  --background: oklch(0.979 0.002 248);
+  --foreground: oklch(0.346 0.043 237);               /* Charcoal Blue */
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.346 0.043 237);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.346 0.043 237);
+  --primary: oklch(0.861 0.153 87);                   /* Golden Pollen */
+  --primary-foreground: oklch(0.346 0.043 237);
+  --secondary: oklch(0.771 0.094 130);                /* Muted Olive */
+  --secondary-foreground: oklch(0.346 0.043 237);
+  --muted: oklch(0.958 0.003 265);
+  --muted-foreground: oklch(0.491 0.033 236);
+  --accent: oklch(0.951 0.057 90);                    /* soft Golden Pollen wash */
+  --accent-foreground: oklch(0.346 0.043 237);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.904 0.006 240);
+  --input: oklch(0.904 0.006 240);
+  --ring: oklch(0.644 0.066 174);                     /* Seagrass */
+  --chart-1: oklch(0.346 0.043 237);                  /* Charcoal Blue */
+  --chart-2: oklch(0.731 0.178 49);                   /* Pumpkin Spice */
+  --chart-3: oklch(0.861 0.153 87);                   /* Golden Pollen */
+  --chart-4: oklch(0.771 0.094 130);                  /* Muted Olive */
+  --chart-5: oklch(0.644 0.066 174);                  /* Seagrass */
+  --radius: 0.625rem;
+  --sidebar: oklch(1 0 0);
+  --sidebar-foreground: oklch(0.346 0.043 237);
+  --sidebar-primary: oklch(0.861 0.153 87);
+  --sidebar-primary-foreground: oklch(0.346 0.043 237);
+  --sidebar-accent: oklch(0.951 0.057 90);
+  --sidebar-accent-foreground: oklch(0.346 0.043 237);
+  --sidebar-border: oklch(0.904 0.006 240);
+  --sidebar-ring: oklch(0.644 0.066 174);
+}
+
+.dark {
+  --background: oklch(0.242 0.026 233);               /* deep Charcoal Blue */
+  --foreground: oklch(0.976 0.002 248);
+  --card: oklch(0.346 0.043 237);                     /* Charcoal Blue */
+  --card-foreground: oklch(0.976 0.002 248);
+  --popover: oklch(0.346 0.043 237);
+  --popover-foreground: oklch(0.976 0.002 248);
+  --primary: oklch(0.861 0.153 87);                   /* Golden Pollen */
+  --primary-foreground: oklch(0.346 0.043 237);
+  --secondary: oklch(0.482 0.036 175);                /* Seagrass and Olive on charcoal */
+  --secondary-foreground: oklch(0.976 0.002 248);
+  --muted: oklch(0.31 0.038 236);
+  --muted-foreground: oklch(0.767 0.014 234);
+  --accent: oklch(0.448 0.035 237);
+  --accent-foreground: oklch(0.976 0.002 248);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.644 0.066 174);                     /* Seagrass */
+  --chart-1: oklch(0.767 0.014 234);
+  --chart-2: oklch(0.731 0.178 49);
+  --chart-3: oklch(0.861 0.153 87);
+  --chart-4: oklch(0.771 0.094 130);
+  --chart-5: oklch(0.644 0.066 174);
+  --sidebar: oklch(0.346 0.043 237);
+  --sidebar-foreground: oklch(0.976 0.002 248);
+  --sidebar-primary: oklch(0.861 0.153 87);
+  --sidebar-primary-foreground: oklch(0.346 0.043 237);
+  --sidebar-accent: oklch(0.448 0.035 237);
+  --sidebar-accent-foreground: oklch(0.976 0.002 248);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.644 0.066 174);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
   }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
 }
