@@ -1,12 +1,15 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // 1. Static Export Settings
+  output: "export",
+  images: { unoptimized: true }, // Required for static hosting
+  trailingSlash: true,           // Avoids 404s on static refresh
+
+  // 2. Other Experimental & Turbopack Configurations
   experimental: {
     agentFeedback: true,
   },
-  cacheComponents: true,
-  partialPrefetching: true,
   turbopack: {
     rules: {
       "*.css": {
@@ -15,6 +18,9 @@ const nextConfig: NextConfig = {
       },
     },
   },
+
+  // Uncomment and modify if deploying to username.github.io/repo-name
+  // basePath: "/repo-name",
 };
 
 export default nextConfig;

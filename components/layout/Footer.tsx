@@ -28,7 +28,6 @@ const areas = [
 ];
 
 async function CopyrightYear() {
-  "use cache";
   return <>{new Date().getFullYear()}</>;
 }
 
