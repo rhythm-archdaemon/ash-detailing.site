@@ -1,11 +1,15 @@
 import type { NextConfig } from "next";
 
+const isProd = process.env.NODE_ENV === "production";
+const basePath = isProd ? "/ash-detailing.site" : "";
+
 const nextConfig: NextConfig = {
   // 1. Static Export Settings
   output: "export",
   images: { unoptimized: true }, // Required for static hosting
   trailingSlash: true,           // Avoids 404s on static refresh
-  basePath: "/ash-detailing.site",
+  basePath,
+  env: { NEXT_PUBLIC_BASE_PATH: basePath },
 
   // 2. Other Experimental & Turbopack Configurations
   experimental: {
